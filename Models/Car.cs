@@ -8,4 +8,5 @@ public class Car
     public int Year { get; set; }
     public string VIN { get; set; }
     public int mileage { get; set; }
+    public ICollection<MaintenanceLog> MaintenanceLogs { get; set; } = new List<MaintenanceLog>();
 }
