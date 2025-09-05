@@ -1,4 +1,6 @@
 using AutoLog.Data;
+using AutoLog.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -10,6 +12,9 @@ builder.Services.AddControllersWithViews();
 // AutoLogDbContext Connection String: registers the DbContext and tells it what connection string to use to connect (stored in secret)
 builder.Services.AddDbContext<AutoLogDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<AutoLogDbContext>();
 
 var app = builder.Build();
 

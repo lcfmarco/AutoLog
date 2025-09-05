@@ -3,16 +3,20 @@
 
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 using AutoLog.Models;
 
 namespace AutoLog.Data;
 
-public class AutoLogDbContext :  DbContext // Inherit base DbContext class
+public class AutoLogDbContext :  IdentityDbContext<User> // Inherit base DbContext class
 {
     public AutoLogDbContext(DbContextOptions<AutoLogDbContext> options) : base(options) { }
 
     public DbSet<Car> Cars => Set<Car>();
 
     public DbSet<MaintenanceLog> MaintenanceLogs => Set<MaintenanceLog>();
+    
+    
 
 }
