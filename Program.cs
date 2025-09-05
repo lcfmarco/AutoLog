@@ -16,6 +16,9 @@ builder.Services.AddDbContext<AutoLogDbContext>(options =>
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AutoLogDbContext>();
 
+builder.Services.Configure<JwtSettings>(
+    builder.Configuration.GetSection("JwtSettings"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
